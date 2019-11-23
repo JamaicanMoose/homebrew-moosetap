@@ -5,7 +5,13 @@ class UnionfsFuse < Formula
 
   depends_on :osxfuse
 
+  depends_on "pkg-config" => :build
+
   def install
-    system "make", "install"
+    system "make"
+    bin.install "src/unionfs"
+    bin.install "src/unionfsctl"
+    sbin.install "mount.unionfs"
+    man8.install "man/unionfs.8"
   end
 end
